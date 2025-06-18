@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrolling Advertisement</title>
+  <style>
+    body {
+      margin:0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000080;
+    }
+
+    .marquee-container {
+      width: 100%;
+      height: 50px;
+      overflow: hidden;
+      position: relative;
+      background: #20;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      line-height:50px;
+    }
+
+    .marquee-text {
+      white-space: nowrap;
+      position: absolute;
+      will-change:transform;
+      animation: scroll-right 10s linear infinite;
+    }
+
+    @keyframes scroll-right {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+         transform: translateX(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee-container">
+     <div class="marquee-text" id="marqueeText"></div>
+</div>
+     <script>
+  const messages = [
+    "WELCOME TO ST. BAKHITA CATHOLIC CHURCH SERVICE ONGOING",
+    "Solemnity of Most Holy Body and Blood of Christ FIRST READING: Genesis 14:18‐20",
+    "RESPONSORIAL PSALM: Psalm 109(110):1‐ DISCUSSES THE EXALTATION OF  A KING",
+    "SECOND READING: 1 Corinthians 11:23‐26 DISCUSSES THE LORD'S SUPPER ",
+    "GOSPEL: Luke 9:11‐17 RECOUNTS JESUS  FEEDING OF THE 5,000,"
+  ];
+ let index = 0;
+  const marqueeText = document.getElementById("marqueeText");
+
+  function updateMarquee() {
+    marqueeText.style.animation = "none"; // Reset animation
+    marqueeText.offsetHeight; // Trigger reflow
+    marqueeText.innerText = messages[index];
+    marqueeText.style.animation = "scroll-right 20s linear infinite";
+
+    index = (index + 1) % messages.length;
+  }
+
+  updateMarquee(); // Show first message
+  setInterval(updateMarquee, 19000); // Change every 10seconds (slightly longer than animation)
+    </script>
+ </body>
+ 
+</html>
