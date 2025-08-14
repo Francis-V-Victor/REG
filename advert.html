@@ -5,10 +5,12 @@
   <title>Scrolling Advertisement</title>
   <style>
     body {
-      margin:0;
+      margin: 0;
       padding: 0;
       overflow: hidden;
       background-color: green;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     .marquee-container {
@@ -17,18 +19,16 @@
       overflow: hidden;
       position: relative;
       background: green;
-      color: white;
-      font-weight:bold;
-      font-family: Arial, sans-serif;
+      font-weight: bold;
       font-size: 30px;
-      line-height:50px;
+      line-height: 50px;
     }
 
     .marquee-text {
       white-space: nowrap;
       position: absolute;
-      will-change:transform;
-      animation: scroll-right 10s linear infinite;
+      will-change: transform;
+      animation: scroll-right 20s linear infinite;
     }
 
     @keyframes scroll-right {
@@ -36,92 +36,57 @@
         transform: translateX(100%);
       }
       100% {
-         transform: translateX(-100%);
+        transform: translateX(-100%);
       }
+    }
+
+    .reading {
+      background-color: green;
+      color: white;
+      margin: 8px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
+
+  <!-- Scrolling Advertisement -->
   <div class="marquee-container">
-     <div class="marquee-text" id="marquee-text"></div>
-</div>
-     <script>
-  const messages = [
-    "WELCOME TO ST. ANN'S CHAPLAINCY MASENO UNIVERSITY",
-  ];
- let index = 0;
-  const marqueeText = document.getElementById("marqueeText");
+    <div class="marquee-text" id="marquee-text"></div>
+  </div>
 
-  function updateMarquee() {
-    marqueeText.style.animation = "none"; // Reset animation
-    marqueeText.offsetHeight; // Trigger reflow
-    marqueeText.innerText = messages[index];
-    marqueeText.style.animation = "scroll-right 20s linear infinite";
+  <!-- Reading Section -->
+  <div class="reading">
+    <strong>First Reading: Jeremiah 38: 4-6, 8-10</strong><br><br>
+    4 And the princes said to the king: We beseech thee that this man may be put to death: for on purpose he weakeneth the hands of the men of war, that remain in this city, and the hands of the people, speaking to them according to these words: for this man seeketh not peace to this people, but evil.<br>
+    5 And king Sedecias said: Behold he is in your hands: for it is not lawful for the king to deny you any thing.<br>
+    6 Then they took Jeremias and cast him into the dungeon of Melchias the son of Amelech, which was in the entry of the prison: and they let down Jeremias by ropes into the dungeon, wherein there was no water, but mire. And Jeremias sunk into the mire.<br>
+    8 And Abdemelech went out of the king’s house, and spoke to the king, saying:<br>
+    9 My lord the king, these men have done evil in all that they have done against Jeremias the prophet, casting him into the dungeon to die there with hunger, for there is no more bread in the city.<br>
+    10 Then the king commanded Abdemelech the Ethiopian, saying: Take from hence thirty men with thee, and draw up Jeremias the prophet out of the dungeon, before he die.<br><br>
+  </div>
 
-    index = (index + 1) % messages.length;
-  }
+  <script>
+    const messages = [
+      "WELCOME TO ST. ANN'S CHAPLAINCY MASENO UNIVERSITY"
+    ];
 
-  updateMarquee(); // Show first message
-  setInterval(updateMarquee, 19000); // Change every 10seconds (slightly longer than animation)
-    
-    </script>
+    let index = 0;
+    const marqueeText = document.getElementById("marquee-text");
+
+    function updateMarquee() {
+      marqueeText.style.animation = "none"; // Reset animation
+      marqueeText.offsetHeight; // Trigger reflow
+      marqueeText.innerText = messages[index];
+      marqueeText.style.animation = "scroll-right 20s linear infinite";
+      index = (index + 1) % messages.length;
+    }
+
+    updateMarquee(); // Show first message
+    setInterval(updateMarquee, 19000); // Change every 19 seconds
+  </script>
+
 </body>
-  <body>
-  <style>
-.class-p{
-background-color:green;
-color:white;
-margin-left:8px;
-font-weight:bold;
-font-size:40px;
- width: 100%;
- height: 50px;
- font-size: 30px;
- line-height:50px;
-}</style>
-  <p class="class-p">
-   <head>First Reading: Jeremiah 38: 4-6, 8-10</head><br><br>
-4 And the princes said to the king: We beseech thee that this man may be put to death: for on purpose he weakeneth the hands of the men of war, that remain in this city, and the hands of the people, speaking to them according to these words: for this man seeketh not peace to this people, but evil.<br>
-5 And king Sedecias said: Behold he is in your hands: for it is not lawful for the king to deny you any thing.<br>
-6 Then they took Jeremias and cast him into the dungeon of Melchias the son of Amelech, which was in the entry of the prison: and they let down Jeremias by ropes into the dungeon, wherein there was no water, but mire. And Jeremias sunk into the mire.<br>
-8 And Abdemelech went out of the king’s house, and spoke to the king, saying:<br>
-9 My lord the king, these men have done evil in all that they have done against Jeremias the prophet, casting him into the dungeon to die there with hunger, for there is no more bread in the city.<br>
-10 Then the king commanded Abdemelech the Ethiopian, saying: Take from hence thirty men with thee, and draw up Jeremias the prophet out of the dungeon, before he die.<br>
-  <br><br>
-  </p>
-  </body>
-  </body>
- 
- 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
