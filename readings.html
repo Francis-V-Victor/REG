@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Readings & Prayers</title>
+    <style>
+        /* All the CSS is placed here within the style tags */
+
+        /* Basic body and page layout styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Create a gradient background with "light" effects */
+            background: radial-gradient(circle at top left, #f3e9f7, #ffffff);
+            min-height: 100vh;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container for the navigation buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background for blur effect */
+            backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the main navigation buttons */
+        .button-container button {
+            background-color: #6a5acd; /* Soft purple */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 25px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover and active states for interactive buttons */
+        .button-container button:hover {
+            background-color: #5544b3;
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .button-container button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main content area styling */
+        #content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #483d8b; /* Deeper purple for titles */
+            border-bottom: 2px solid #6a5acd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Button group for the daily readings and prayers */
+        .day-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        /* Individual day buttons styling */
+        .day-buttons button {
+            background-color: #f0e6fa; /* Lighter purple background */
+            color: #483d8b;
+            border: 1px solid #6a5acd;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for day buttons */
+        .day-buttons button:hover {
+            background-color: #e6d8ff;
+        }
+
+        /* Styling for the dynamically loaded sub-content */
+        #sub-content {
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="button-container">
+        <button onclick="showPage('sunday')">SUNDAY</button>
+        <button onclick="showPage('daily-readings')">DAILY READINGS</button>
+        <button onclick="showPage('daily-prayers')">DAILY PRAYERS</button>
+    </nav>
+
+    <main id="content">
+        <!-- Content will be loaded here dynamically -->
+    </main>
+
+    <script>
+        // Content for each section
+        const content = {
+            'sunday': `
+                <h1>TODAY'S MASS READINGS</h1>
+                <p>Welcome to Sunday! Here you will find the readings and prayers for the Lord's Day.</p>
+                <p>Blessed are those called to the supper of the Lamb.</p>
+            `,
+            'daily-readings': `
+                <h2>Daily Readings</h2>
+                <div class="day-buttons">
+                    <button onclick="showSubPage('readings-monday')">Monday</button>
+                    <button onclick="showSubPage('readings-tuesday')">Tuesday</button>
+                    <button onclick="showSubPage('readings-wednesday')">Wednesday</button>
+                    <button onclick="showSubPage('readings-thursday')">Thursday</button>
+                    <button onclick="showSubPage('readings-friday')">Friday</button>
+                    <button onclick="showSubPage('readings-saturday')">Saturday</button>
+                </div>
+                <div id="sub-content">
+                    <h3>Select a day to view the readings.</h3>
+                </div>
+            `,
+            'daily-prayers': `
+                <h2>Daily Prayers</h2>
+                <div class="day-buttons">
+                    <button onclick="showSubPage('prayers-monday')">Monday</button>
+                    <button onclick="showSubPage('prayers-tuesday')">Tuesday</button>
+                    <button onclick="showSubPage('prayers-wednesday')">Wednesday</button>
+                    <button onclick="showSubPage('prayers-thursday')">Thursday</button>
+                    <button onclick="showSubPage('prayers-friday')">Friday</button>
+                    <button onclick="showSubPage('prayers-saturday')">Saturday</button>
+                </div>
+                <div id="sub-content">
+                    <h3>Select a day to view the prayers.</h3>
+                </div>
+            `,
+            'readings-monday': '<h3>Readings for Monday</h3><p>Content for Monday\'s readings goes here.</p>',
+            'readings-tuesday': '<h3>Readings for Tuesday</h3><p>Content for Tuesday\'s readings goes here.</p>',
+            'readings-wednesday': '<h3>Readings for Wednesday</h3><p>Content for Wednesday\'s readings goes here.</p>',
+            'readings-thursday': '<h3>Readings for Thursday</h3><p>Content for Thursday\'s readings goes here.</p>',
+            'readings-friday': '<h3>Readings for Friday</h3><p>Content for Friday\'s readings goes here.</p>',
+            'readings-saturday': '<h3>Readings for Saturday</h3><p>Content for Saturday\'s readings goes here.</p>',
+            'prayers-monday': '<h3>Prayers for Monday</h3><p>Content for Monday\'s prayers goes here.</p>',
+            'prayers-tuesday': '<h3>Prayers for Tuesday</h3><p>Content for Tuesday\'s prayers goes here.</p>',
+            'prayers-wednesday': '<h3>Prayers for Wednesday</h3><p>Content for Wednesday\'s prayers goes here.</p>',
+            'prayers-thursday': '<h3>Prayers for Thursday</h3><p>Content for Thursday\'s prayers goes here.</p>',
+            'prayers-friday': '<h3>Prayers for Friday</h3><p>Content for Friday\'s prayers goes here.</p>',
+            'prayers-saturday': '<h3>Prayers for Saturday</h3><p>Content for Saturday\'s prayers goes here.</p>',
+        };
+
+        function showPage(pageId) {
+            document.getElementById('content').innerHTML = content[pageId];
+        }
+
+        function showSubPage(subPageId) {
+            document.getElementById('sub-content').innerHTML = content[subPageId];
+        }
+
+        // Set Sunday as the default content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('sunday');
+        });
+    </script>
+
+</body>
+</html>
