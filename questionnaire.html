@@ -11,10 +11,10 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
 
-            /* 🔔 BACKGROUND IMAGE
-               Replace the URL below with the REAL photo of
+            /* 🔔 CHAPEL BACKGROUND IMAGE
+               👉 Replace this URL with the REAL image of
                ST. ANN'S CHAPEL MASENO when available */
-            background-image: url("https://images.unsplash.com/photo-1544025162-d76694265947");
+            background-image: url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -26,7 +26,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.80);
         }
 
         /* Top section */
@@ -78,27 +78,19 @@
             transform: translateY(-2px);
         }
 
-        /* Rosary divider */
-        .rosary {
+        /* Rosary image divider */
+        .rosary-divider {
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 0;
-            background: #483d8b;
+            margin-bottom: 6px;
         }
 
-        .bead {
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .cross {
-            font-size: 18px;
-            color: white;
-            margin-left: 8px;
+        .rosary-divider img {
+            width: 85%;
+            max-width: 420px;
+            height: auto;
+            opacity: 0.9;
         }
 
         /* Semester theme */
@@ -110,6 +102,9 @@
             font-size: 14px;
             text-align: center;
             line-height: 1.6;
+
+            /* Raised slightly but still touching bottom */
+            margin-bottom: 0;
         }
     </style>
 </head>
@@ -139,14 +134,11 @@
         </a>
     </div>
 
-    <!-- ROSARY DIVIDER -->
-    <div class="rosary">
-        <div class="bead"></div>
-        <div class="bead"></div>
-        <div class="bead"></div>
-        <div class="bead"></div>
-        <div class="bead"></div>
-        <span class="cross">✝️</span>
+    <!-- ROSARY IMAGE DIVIDER -->
+    <div class="rosary-divider">
+        <!-- 🔔 Replace this with a rosary image of your choice if needed -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Rosary_beads.png" 
+             alt="Holy Rosary Divider">
     </div>
 
     <!-- SEMESTER THEME -->
