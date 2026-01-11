@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Daily Readings & Prayers</title>
+    <title>Readings & Prayers</title>
 
     <style>
         body {
@@ -12,81 +12,43 @@
             padding: 0;
             background: radial-gradient(circle at top left, #f3e9f7, #ffffff);
             min-height: 100vh;
-            color: #333;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
-        /* Navigation bar */
         .button-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
-            padding: 20px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
         }
 
-        /* Main navigation buttons */
+        h1 {
+            color: #483d8b;
+            margin-bottom: 20px;
+        }
+
         .button-link {
-            padding: 15px 30px;
+            display: block;
+            padding: 18px;
             background-color: #6a5acd;
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 16px;
+            border-radius: 30px;
+            font-size: 18px;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .button-link:hover {
             background-color: #5544b3;
-            transform: translateY(-2px);
-        }
-
-        /* Content area */
-        #content {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            margin: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-        }
-
-        h1, h2 {
-            color: #483d8b;
-            border-bottom: 2px solid #6a5acd;
-            padding-bottom: 10px;
-        }
-
-        /* Day buttons */
-        .day-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .day-link {
-            display: inline-block;
-            background-color: #f0e6fa;
-            color: #483d8b;
-            border: 1px solid #6a5acd;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .day-link:hover {
-            background-color: #e6d8ff;
             transform: translateY(-2px);
         }
     </style>
@@ -94,35 +56,26 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="button-container">
-        <!-- Sunday (custom link stays) -->
-        <a href="https://francis-v-victor.github.io/REG/advert.html" class="button-link">SUNDAY</a>
+    <div class="button-container">
+        <h1>Readings & Prayers</h1>
 
-        <!-- External EWTN links -->
-        <a href="https://www.ewtn.com/daily-readings?from=ewtnplus" class="button-link" target="_blank">
+        <!-- Sunday (custom page) -->
+        <a href="https://francis-v-victor.github.io/REG/advert.html" class="button-link">
+            SUNDAY
+        </a>
+
+        <!-- Daily Readings (EWTN) -->
+        <a href="https://www.ewtn.com/daily-readings?from=ewtnplus" 
+           class="button-link" target="_blank">
             DAILY READINGS
         </a>
 
-        <a href="https://www.ewtn.com/daily-readings?from=ewtnplus" class="button-link" target="_blank">
+        <!-- Daily Prayers (MyCatholic.life) -->
+        <a href="https://mycatholic.life/catholic-prayers/" 
+           class="button-link" target="_blank">
             DAILY PRAYERS
         </a>
-    </nav>
-
-    <!-- Main content -->
-    <main id="content">
-        <h1>Daily Readings</h1>
-        <p>Select a day to view the official EWTN readings.</p>
-
-        <div class="day-buttons">
-            <a href="https://www.ewtn.com/daily-readings/monday" class="day-link" target="_blank">Monday</a>
-            <a href="https://www.ewtn.com/daily-readings/tuesday" class="day-link" target="_blank">Tuesday</a>
-            <a href="https://www.ewtn.com/daily-readings/wednesday" class="day-link" target="_blank">Wednesday</a>
-            <a href="https://www.ewtn.com/daily-readings/thursday" class="day-link" target="_blank">Thursday</a>
-            <a href="https://www.ewtn.com/daily-readings/friday" class="day-link" target="_blank">Friday</a>
-            <a href="https://www.ewtn.com/daily-readings/saturday" class="day-link" target="_blank">Saturday</a>
-        </div>
-    </main>
+    </div>
 
 </body>
 </html>
