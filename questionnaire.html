@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +11,12 @@
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-
-            /* 🔔 CHAPEL BACKGROUND IMAGE
-               👉 Replace this URL with the REAL image of
-               ST. ANN'S CHAPEL MASENO when available */
-            background-image: url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620");
+            background-image: url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620"); /* Replace with chapel image */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Page overlay */
         .page {
             min-height: 100vh;
             display: flex;
@@ -29,7 +25,7 @@
             background: rgba(255, 255, 255, 0.80);
         }
 
-        /* Top section */
+        /* TOP SECTION */
         .top {
             padding: 25px 20px 10px;
             text-align: center;
@@ -47,7 +43,7 @@
             color: #483d8b;
         }
 
-        /* Buttons */
+        /* BUTTONS */
         .buttons {
             padding: 30px 20px;
             display: flex;
@@ -64,8 +60,8 @@
             justify-content: center;
             gap: 10px;
             padding: 18px;
-            background-color: #6a5acd;
-            color: white;
+            background-color: #6a5acd; /* Purple */
+            color: white; /* White text */
             text-decoration: none;
             border-radius: 30px;
             font-size: 18px;
@@ -74,26 +70,25 @@
         }
 
         .button-link:hover {
-            background-color: #5544b3;
+            background-color: #5544b3; /* Darker purple on hover */
             transform: translateY(-2px);
         }
 
-        /* Rosary image divider */
-        .rosary-divider {
+        /* GOLD ROSARY IMAGE */
+        .rosary {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
-        .rosary-divider img {
-            width: 85%;
-            max-width: 420px;
+        .rosary img {
+            width: 180px;
+            max-width: 200px;
             height: auto;
-            opacity: 0.9;
         }
 
-        /* Semester theme */
+        /* SEMESTER THEME */
         .theme {
             width: 100%;
             padding: 18px 15px;
@@ -102,9 +97,6 @@
             font-size: 14px;
             text-align: center;
             line-height: 1.6;
-
-            /* Raised slightly but still touching bottom */
-            margin-bottom: 0;
         }
     </style>
 </head>
@@ -134,11 +126,9 @@
         </a>
     </div>
 
-    <!-- ROSARY IMAGE DIVIDER -->
-    <div class="rosary-divider">
-        <!-- 🔔 Replace this with a rosary image of your choice if needed -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Rosary_beads.png" 
-             alt="Holy Rosary Divider">
+    <!-- GOLD ROSARY IMAGE -->
+    <div class="rosary">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Rosary_gold.png" alt="Gold Rosary">
     </div>
 
     <!-- SEMESTER THEME -->
@@ -150,3 +140,4 @@
 
 </body>
 </html>
+
