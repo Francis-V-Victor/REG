@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nairobi City County E-Learning Portal</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f9;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    margin-bottom:20px;
+}
+
+h1,h2{
+    text-align:center;
+    color:#0056b3;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+}
+
+.login{background:#4CAF50;}
+.register{background:#008CBA;}
+.logout{background:#f44336;}
+.back{background:#666;}
+
+.hidden{
+    display:none;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th,table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+.message{
+    text-align:center;
+    font-weight:bold;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>NAIROBI CITY COUNTY</h1>
+<h2>E-LEARNING PORTAL</h2>
+
+<!-- LOGIN -->
+<div id="loginPage" class="card">
+
+<h3>Login</h3>
+
+<input type="text" id="loginId" placeholder="ID Number">
+<input type="password" id="loginPassword" placeholder="Password">
+
+<button class="login" onclick="login()">Login</button>
+<button class="register" onclick="showRegister()">Register</button>
+
+</div>
+
+<!-- REGISTER -->
+<div id="registerPage" class="card hidden">
+
+<h3>Student Registration</h3>
+
+<input type="text" id="name" placeholder="Full Name">
+
+<select id="gender">
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<input type="date" id="dob">
+<input type="text" id="regId" placeholder="ID Number">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="regPassword" placeholder="Password">
+
+<button class="register" onclick="registerUser()">
+Submit Registration
+</button>
+
+<button class="back" onclick="showLogin()">
+Back
+</button>
+
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardPage" class="card hidden">
+
+<h3>Student Dashboard</h3>
+
+<button class="login" onclick="showProfile()">
+My Profile
+</button>
+
+<button class="register" onclick="showCourses()">
+Course Registration
+</button>
+
+<!-- ADDED BUTTON -->
+<button class="register" onclick="showRegisteredCourses()">
+Registered Courses
+</button>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<!-- PROFILE -->
+<div id="profilePage" class="card hidden">
+
+<h3>My Profile</h3>
+
+<p><b>Name:</b> <span id="pName"></span></p>
+<p><b>ID Number:</b> <span id="pId"></span></p>
+<p><b>Email:</b> <span id="pEmail"></span></p>
+<p><b>Gender:</b> <span id="pGender"></span></p>
+
+<button class="back" onclick="showDashboard()">
+Back
+</button>
+
+</div>
+
+<!-- COURSE REGISTRATION -->
+<div id="coursePage" class="card hidden">
+
+<h3>Course Registration</h3>
+
+<select id="course">
+<option>Web Development</option>
+<option>Database Management</option>
+<option>Networking</option>
+<option>Cyber Security</option>
+<option>Artificial Intelligence</option>
+</select>
+
+<button class="register" onclick="registerCourse()">
+Register Course
+</button>
+
+<button class="back" onclick="showDashboard()">
+Back
+</button>
+
+</div>
+
+<!-- REGISTERED COURSES (ADDED) -->
+<div id="registeredCoursePage" class="card hidden">
+
+<h3>Registered Courses</h3>
+
+<p><b>Name:</b> <span id="rcName"></span></p>
+<p><b>ID Number:</b> <span id="rcId"></span></p>
+<p><b>Email:</b> <span id="rcEmail"></span></p>
+
+<table>
+<tr>
+<th>Course(s)</th>
+</tr>
+<tbody id="courseTable"></tbody>
+</table>
+
+<button class="back" onclick="showDashboard()">
+Back
+</button>
+
+</div>
+
+<!-- ADMIN -->
+<div id="adminPage" class="card hidden">
+
+<h3>Admin Panel</h3>
+
+<table>
+<tr>
+<th>Name</th>
+<th>ID</th>
+<th>Email</th>
+</tr>
+<tbody id="studentTable"></tbody>
+</table>
+
+</div>
+
+<div id="message" class="message"></div>
+
+</div>
+
+<script>
+
+let users = [];
+let currentUser = null;
+
+function hideAll(){
+document.querySelectorAll(".card").forEach(card=>{
+card.classList.add("hidden");
+});
+}
+
+function showLogin(){
+hideAll();
+document.getElementById("loginPage").classList.remove("hidden");
+}
+
+function showRegister(){
+hideAll();
+document.getElementById("registerPage").classList.remove("hidden");
+}
+
+function showDashboard(){
+hideAll();
+document.getElementById("dashboardPage").classList.remove("hidden");
+}
+
+function showProfile(){
+hideAll();
+
+document.getElementById("profilePage")
+.classList.remove("hidden");
+
+document.getElementById("pName").innerHTML = currentUser.name;
+document.getElementById("pId").innerHTML = currentUser.id;
+document.getElementById("pEmail").innerHTML = currentUser.email;
+document.getElementById("pGender").innerHTML = currentUser.gender;
+}
+
+function showCourses(){
+hideAll();
+document.getElementById("coursePage")
+.classList.remove("hidden");
+}
+
+/* FIXED USER OBJECT */
+function registerUser(){
+
+const user = {
+name:document.getElementById("name").value,
+gender:document.getElementById("gender").value,
+dob:document.getElementById("dob").value,
+id:document.getElementById("regId").value,
+email:document.getElementById("email").value,
+password:document.getElementById("regPassword").value,
+courses:[]
+};
+
+users.push(user);
+
+document.getElementById("message")
+.innerHTML="Registration Successful";
+
+showLogin();
+}
+
+function login(){
+
+const id = document.getElementById("loginId").value;
+const password = document.getElementById("loginPassword").value;
+
+const user = users.find(u => u.id===id && u.password===password);
+
+if(user){
+currentUser = user;
+document.getElementById("message").innerHTML="Login Successful";
+showDashboard();
+}else{
+document.getElementById("message").innerHTML="Invalid Credentials";
+}
+}
+
+/* FIXED COURSE REGISTRATION */
+function registerCourse(){
+
+const course = document.getElementById("course").value;
+
+if(!currentUser.courses.includes(course)){
+currentUser.courses.push(course);
+}
+
+alert(currentUser.name + " registered for " + course);
+
+showDashboard();
+}
+
+/* ADDED FUNCTION */
+function showRegisteredCourses(){
+
+hideAll();
+
+document.getElementById("registeredCoursePage")
+.classList.remove("hidden");
+
+document.getElementById("rcName").innerHTML = currentUser.name;
+document.getElementById("rcId").innerHTML = currentUser.id;
+document.getElementById("rcEmail").innerHTML = currentUser.email;
+
+let table = document.getElementById("courseTable");
+table.innerHTML = "";
+
+if(currentUser.courses.length === 0){
+table.innerHTML = "<tr><td>No Course Registered</td></tr>";
+}else{
+currentUser.courses.forEach(course=>{
+table.innerHTML += "<tr><td>" + course + "</td></tr>";
+});
+}
+}
+
+function logout(){
+currentUser = null;
+showLogin();
+}
+
+</script>
+
+</body>
+</html>
